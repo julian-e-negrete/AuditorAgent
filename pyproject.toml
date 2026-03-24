@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "arch-agent"
+version = "0.1.0"
+description = "LLM-backed conversational architecture documentation agent"
+requires-python = ">=3.11"
+dependencies = [
+    "typer[all]>=0.12",
+    "fastapi>=0.111",
+    "uvicorn[standard]>=0.29",
+    "langchain>=0.2",
+    "litellm>=1.40",
+    "httpx>=0.27",
+    "pydantic>=2.7",
+    "pydantic-settings>=2.3",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "hypothesis>=6.100",
+    "pytest>=8.2",
+    "pytest-asyncio>=0.23",
+]
+
+[project.scripts]
+arch-agent = "arch_agent.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["arch_agent*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

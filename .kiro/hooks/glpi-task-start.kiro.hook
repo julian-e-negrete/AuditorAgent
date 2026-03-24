@@ -1,0 +1,12 @@
+{
+  "name": "GLPI Task Start",
+  "version": "1.0.0",
+  "description": "MANDATORY: Before any spec task begins, create a GLPI ticket via glpi-api-proxy MCP",
+  "when": {
+    "type": "preTaskExecution"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "MANDATORY ACTION — do this before anything else.\n\nCall create_server_ticket from the glpi-api-proxy MCP server with:\n- title: the task name and number (e.g. 'Task 3.1 — Implement ArchiveIngestionTool.load()')\n- description: one sentence describing what will be implemented\n- agent: 'kiro'\n- urgency: 3\n\nIf the call fails or times out, log 'GLPI ticket creation failed: <error>' and continue. Do not skip this step — always attempt it."
+  }
+}

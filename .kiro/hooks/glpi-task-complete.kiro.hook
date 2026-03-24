@@ -1,0 +1,12 @@
+{
+  "name": "GLPI Task Complete",
+  "version": "1.0.0",
+  "description": "MANDATORY: After any spec task completes, close the matching GLPI ticket via glpi-api-proxy MCP",
+  "when": {
+    "type": "postTaskExecution"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "MANDATORY ACTION — do this after the task completes.\n\n1. Call list_server_tickets() from the glpi-api-proxy MCP server to find the open ticket matching this task.\n2. Call complete_server_ticket(ticket_id, solution) with:\n   - ticket_id: the ID of the matching open ticket\n   - solution: a brief description of what was implemented\n\nIf no matching ticket is found or the call fails, log 'GLPI ticket close failed: <error>' and finish. Do not skip this step — always attempt it."
+  }
+}

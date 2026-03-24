@@ -1,0 +1,12 @@
+{
+  "name": "GLPI Task Start",
+  "version": "1.0.0",
+  "description": "Al iniciar una tarea de spec, crea un ticket en GLPI vinculado a SRV-GLPI-PROCESSOR",
+  "when": {
+    "type": "preTaskExecution"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Una tarea de spec está por comenzar en el proyecto AlgoTrading, que corre en SRV-GLPI-PROCESSOR. Usa la herramienta create_server_ticket del MCP glpi-api-proxy para registrar la tarea en GLPI. El título debe ser el nombre de la tarea, la descripción debe incluir qué se va a hacer, y el campo agent debe ser 'kiro'. Si no puedes conectarte al proxy, continúa con la tarea sin interrumpir."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "GLPI Task Complete",
+  "version": "1.0.0",
+  "description": "Al completar una tarea de spec, marca el ticket GLPI correspondiente como resuelto",
+  "when": {
+    "type": "postTaskExecution"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Una tarea de spec acaba de completarse en el proyecto AlgoTrading (SRV-GLPI-PROCESSOR). Usa list_server_tickets con server_name='SRV-GLPI-PROCESSOR' para encontrar el ticket abierto correspondiente a esta tarea, luego usa complete_server_ticket para marcarlo como resuelto. La solución debe describir brevemente qué se implementó. Si no hay ticket relacionado o no puedes conectarte al proxy, no hagas nada."
+  }
+}
